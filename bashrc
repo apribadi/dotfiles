@@ -1,12 +1,13 @@
 # Exit if we're in a script
 [ -z "$PS1" ] && return
 
-# Bash prompt
-PS1='[\u@\h \W]\$ '
+# prompt
+PS1='\[\e[1;32m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]>\[\e[m\] '
 
-# Set vi mode
 set -o vi
 export EDITOR=vim
+export HISTCONTROL=ignoredups
+shopt -s checkwinsize
 
 . /etc/bash_completion      # Enable good bash completion
 bind "set show-all-if-ambiguous on"

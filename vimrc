@@ -10,6 +10,7 @@ set softtabstop=4
 set tabstop=4
 set textwidth=80
 set scrolloff=5            " keep 5 lines above/below
+set mouse=a
 
 set hlsearch               " highlight matches
 set incsearch              " incremental
