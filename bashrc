@@ -25,15 +25,15 @@ else
     # compresses directory components
     function _dir_short { 
     perl <<-'EOF'
-        $_ = `pwd`; chomp;
-        if ($_ eq '/') {
-            print '/';
-        } else {
-            s/$ENV{HOME}/~/;
-            @_ = split '/', $_;
-            $_ = substr($_, 0, 1) for @_[0 .. $#_ - 2];
-            print join('/', @_);
-        }
+$_ = `pwd`; chomp;
+if ($_ eq '/') {
+    print '/';
+} else {
+    s/$ENV{HOME}/~/;
+    @_ = split '/', $_;
+    $_ = substr($_, 0, 1) for @_[0 .. $#_ - 2];
+    print join('/', @_);
+}
 EOF
     } 
 
@@ -54,6 +54,8 @@ EOF
     # make tab completion work better
     bind "set show-all-if-ambiguous on"
     bind "set completion-ignore-case on"
+    bind "set completion-prefix-display-length 2"
+    bind "set completion-map-case on" # underscores and hyphens treated as same
 
     export EDITOR=vim
     export HISTFILESIZE=10000
@@ -67,12 +69,6 @@ EOF
     # make some of my programs autocomplete
     complete -cf run # commands and files
 
-    if [ -n "$DISPLAY" ]; then
-        export BROWSER=chromium
-    else
-        export BROWSER=links
-    fi
-
     # Aliases
     alias ls='ls --human-readable --classify --color --group-directories-first'
     alias ..='cd ..'
@@ -81,5 +77,14 @@ EOF
     alias du='du -h'
     alias mkdir='mkdir -p'
     alias ikarus=ikarus_wrap
-    alias ipython='ipython3 --no-confirm-exit --classic'
+    alias ipython='ipython --no-confirm-exit --classic'
+
+    function ea {
+        ssh -l east ea.st.hmc.edu
+    }
+
+    function et {
+        open $@pdf
+        vim $@tex
+    }
 fi

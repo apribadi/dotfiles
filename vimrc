@@ -58,18 +58,27 @@ let mapleader=" "
 "noremap + <C-W>+
 "noremap - <C-W>-
 "noremap s %
- 
-map <Leader>e :BufExplorer<CR>
-map <Leader>t :NERDTreeToggle<CR>
-map <Leader>a :Tabbi<CR>
+"map <Leader>e :BufExplorer<CR>
+"map <Leader>t :NERDTreeToggle<CR>
+"map <Leader>a :Tabbi<CR>
+
 map <F5> ggg?G``
 map <C-o> o<Esc>
 
 " plugin specific
 "let vimclojure#ParenRainbow = 1
 let g:SuperTabDefaultCompletionType="context"
-let g:NERDTreeQuitOnOpen=1
+"let g:NERDTreeQuitOnOpen=1
 "let g:lisp_rainbow=1
+"
+"" IPA!
+digraphs ez 658 "ezh
+digraphs sw 601 " schwa
+digraphs rs 602 "rhotacized schwa
+digraphs oc 596 "open-mid back rounded vowel
+digraphs ii 618 "small cap I 
+digraphs lv 652 "small cap lambda
+digraphs uu 650 "upside down upsilon
 
 " file type sppcific
 function FTScheme()
